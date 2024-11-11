@@ -7,34 +7,34 @@ namespace Implementation.Player.Effect
 {
     public class PlayerStatusEffectCollection : MonoBehaviour, IPlayerStatusEffectCollection
     {
-        private List<IPlayerStatusEffect> playerStatusEffects = new List<IPlayerStatusEffect>();
+        private readonly List<IPlayerStatusEffect> _playerStatusEffects = new List<IPlayerStatusEffect>();
 
         private void OnDestroy()
         {
-            foreach (IPlayerStatusEffect playerStatusEffect in playerStatusEffects)
+            foreach (IPlayerStatusEffect playerStatusEffect in _playerStatusEffects)
             {
                 if (playerStatusEffect is MonoBehaviour monoBehaviour)
                 {
                     Destroy(monoBehaviour);
                 }
             }
-            playerStatusEffects.Clear();
+            _playerStatusEffects.Clear();
         }
 
         public void AddPlayerStatusEffect(IPlayerStatusEffect playerStatusEffect)
         {
-            playerStatusEffects.Add(playerStatusEffect);
+            _playerStatusEffects.Add(playerStatusEffect);
         }
 
         public void AddPlayerStatusEffect<TEffect>() where TEffect : MonoBehaviour, IPlayerStatusEffect
         {
             TEffect effect = gameObject.AddComponent<TEffect>();
-            playerStatusEffects.Add(effect);
+            _playerStatusEffects.Add(effect);
         }
 
         public void RemovePlayerStatusEffect(IPlayerStatusEffect playerStatusEffect)
         {
-            if (!playerStatusEffects.Remove(playerStatusEffect))
+            if (!_playerStatusEffects.Remove(playerStatusEffect))
             {
                 throw new InvalidOperationException("Cannot remove player status effect which does not belong to this collection.");
             }
@@ -42,7 +42,7 @@ namespace Implementation.Player.Effect
 
         public IPlayerStatusEffect GetPlayerStatusEffect<TEffect>() where TEffect : IPlayerStatusEffect
         {
-            return playerStatusEffects.FirstOrDefault(effect => effect is TEffect);
+            return _playerStatusEffects.FirstOrDefault(effect => effect is TEffect);
         }
     }
 }
