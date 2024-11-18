@@ -1,4 +1,5 @@
 using Implementation.Player.Effect;
+using Implementation.Player.Inventory;
 using UnityEngine;
 
 namespace Implementation.Player
@@ -13,6 +14,9 @@ namespace Implementation.Player
 
         [field: SerializeField]
         public PlayerMoveHandler MoveHandler { get; private set; }
+
+        [field: SerializeField]
+        public PlayerInventoryComponent InventoryComponent { get; private set; }
 
         private void Awake()
         {
