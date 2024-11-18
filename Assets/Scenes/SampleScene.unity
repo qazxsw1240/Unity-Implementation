@@ -1013,6 +1013,7 @@ GameObject:
   - component: {fileID: 1030737025}
   - component: {fileID: 1030737023}
   - component: {fileID: 1030737027}
+  - component: {fileID: 1030737028}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1192,6 +1193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PropertyCollection>k__BackingField: {fileID: 0}
   <MoveHandler>k__BackingField: {fileID: 0}
+  <InventoryComponent>k__BackingField: {fileID: 0}
 --- !u!114 &1030737027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,6 +1204,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 752647872ca60d949a0125b740e2ac20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1030737028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030737017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6482a1c02eb724d22bcebaef34283479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1049685214
@@ -1526,7 +1540,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sightController: {fileID: 995119230}
-  <WanderRadius>k__BackingField: 0
   <SightCollider>k__BackingField: {fileID: 995119229}
 --- !u!1 &1346174483
 GameObject:
