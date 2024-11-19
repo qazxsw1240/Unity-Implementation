@@ -25,6 +25,7 @@ namespace Implementation
         private GUIStyle _guiStyle;
         private FrameRate _frameRate;
         private StatusEffectModifier _statusEffectModifier;
+        private InventoryDebug _inventoryDebug;
 
         private void Awake()
         {
@@ -33,9 +34,11 @@ namespace Implementation
 
             _frameRate = gameObject.GetOrAddComponent<FrameRate>();
             _statusEffectModifier = gameObject.GetOrAddComponent<StatusEffectModifier>();
+            _inventoryDebug = gameObject.GetOrAddComponent<InventoryDebug>();
 
             _frameRate.GUIStyle = _guiStyle;
             _statusEffectModifier.GUIStyle = _guiStyle;
+            _inventoryDebug.GUIStyle = _guiStyle;
         }
     }
 }
