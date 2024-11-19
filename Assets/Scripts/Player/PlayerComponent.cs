@@ -23,6 +23,7 @@ namespace Implementation.Player
             PropertyCollection = GetComponent<PlayerPropertyCollection>();
             StatusEffectCollection = GetComponent<PlayerStatusEffectCollection>();
             MoveHandler = GetComponent<PlayerMoveHandler>();
+            InventoryComponent = GetComponent<PlayerInventoryComponent>();
         }
     }
 }
