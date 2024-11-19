@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Implementation.Entity;
 using Implementation.Player.Inventory;
 using UnityEngine;
@@ -11,12 +12,15 @@ namespace Implementation.Player.AI
         private readonly Rigidbody _rigidbody;
         private readonly PlayerInventoryComponent _playerInventoryComponent;
 
+        private bool _inventoryEventActivated;
+
         public PlayerChaseEnemyStrategy(GameObject targetObject, Rigidbody originRigidbody)
         {
             _targetObject = targetObject;
             _targetTransform = _targetObject.transform;
             _rigidbody = originRigidbody;
             _playerInventoryComponent = _targetObject.GetComponent<PlayerInventoryComponent>();
+            _inventoryEventActivated = false;
         }
 
         public void Update()
@@ -30,8 +34,17 @@ namespace Implementation.Player.AI
             _rigidbody.position += rotationVector * (1.5f * Time.fixedDeltaTime);
             if ((_rigidbody.position - _targetTransform.position).sqrMagnitude < 1)
             {
-                _playerInventoryComponent.Inventory.Add(new DemoEntity());
-                Debug.Log("Entity added to inventory");
+                if (!_inventoryEventActivated)
+                {
+
+                    _playerInventoryComponent.Inventory.Add(new DemoEntity());
+                    Debug.Log("Entity added to inventory");
+                    _inventoryEventActivated = true;
+                }
+            }
+            else
+            {
+                _inventoryEventActivated = false;
             }
         }
     }
